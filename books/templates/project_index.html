@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1 class="my-4 text-center text-primary">Книги библиотеки</h1>
+<div class="container">
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0 rounded-3">
+                <img class="card-img-top img-fluid rounded-top" src="{% static project.image %}" alt="{{ project.title }}" style="height: 200px; object-fit: contain; background-color: #f8f9fa;">
+                <div class="card-body" style="background-color: #f0f0f0;">
+                    <h5 class="card-title text-secondary">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description }}</p>
+                    <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary">Про книгу</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
